@@ -925,7 +925,7 @@ module.exports = {
     fontFamily: ["responsive"],
     fontSize: ["responsive"],
     fontSmoothing: ["responsive"],
-    fontStyle: ["responsive"],
+    // fontStyle: ["responsi!= null ? $_GET['bulan'] :ve"],
     fontVariantNumeric: ["responsive"],
     fontWeight: ["responsive"],
     gap: ["responsive"],
