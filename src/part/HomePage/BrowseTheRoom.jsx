@@ -1,7 +1,24 @@
-import React from 'react'
+import useAsync from 'helpers/hooks/useAsync'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function BrowseTheRoom() {
+    const { data, status, error, run, isLoading } = useAsync({ data: { username: "" } });
+
+    useEffect(() => {
+        run(
+            fetch(
+                "https://2f038279-154d-41e2-819a-d338eebda6f7.mock.pstmn.io/api/products/?page=1&limit=10").then(async response => {
+                    const jsonResponse = await response.json()
+                    if (response.ok)
+                        return jsonResponse
+                    throw new Error(JSON.stringify(jsonResponse))
+                }))
+    }, [run])
+    if (isLoading) {
+        console.log("loading")
+    }
+    console.log(data, status, error);
     return (
         <section className="flex bg-gray-100 py-16 px-4" id="browse-the-room">
             <div className="container mx-auto">
