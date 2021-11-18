@@ -62,7 +62,7 @@ export default function useAsync(initialState) {
         setError,
         reset,
         isIdle: status === "idle",
-        isLoading: status === "idle" || status === "pending",
+        isLoading: status !== 'resolve' && status !== "rejected",
         isError: status === "rejected",
         isSuccess: status === "resolve",
     }
