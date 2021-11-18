@@ -5,12 +5,12 @@ import Sitemap from 'part/Sitemap'
 import React from 'react'
 
 export default function NotFound() {
-    return (
-        <>
-            <Header theme="black" position="relative" />
-            <PageErrorMessage />
-            <Sitemap />
-            <Footer />
-        </>
-    )
+  return (
+    <>
+      <Header theme="black" position="relative" />
+      <PageErrorMessage />
+      <Sitemap />
+      <Footer />
+    </>
+  )
 }

@@ -7,25 +7,25 @@ import ShoppingCart from 'part/Cart/ShoppingCart'
 import ShippingDetail from 'part/Cart/ShippingDetail'
 
 export default function Cart() {
-    return (
-        <>
-            <Header theme="black" position="relative" />
-            <Breadcrumb list={[
-                { url: "/", name: "Home" },
-                { url: "/cart", name: "Shoping Cart" }
-            ]} />
+  return (
+    <>
+      <Header theme="black" position="relative" />
+      <Breadcrumb list={[
+        { url: "/", name: "Home" },
+        { url: "/cart", name: "Shoping Cart" }
+      ]} />
 
-            <section className="md:py-16">
-                <div className="container mx-auto px-4">
-                    <div className="flex -mx-4 flex-wrap">
-                        <ShoppingCart />
-                        <ShippingDetail />
-                    </div>
-                </div>
-            </section>
+      <section className="md:py-16">
+        <div className="container mx-auto px-4">
+          <div className="flex -mx-4 flex-wrap">
+            <ShoppingCart />
+            <ShippingDetail />
+          </div>
+        </div>
+      </section>
 
-            <Sitemap />
-            <Footer />
-        </>
-    )
+      <Sitemap />
+      <Footer />
+    </>
+  )
 }
