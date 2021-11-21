@@ -50,11 +50,11 @@ function Loading({ ratio = {} }) {
 }
 
 export default function BrowseTheRoom() {
-  const { data, run, isLoading } = useAsync({ data: { username: "" } });
+  const { data, run, isLoading } = useAsync();
 
   useEffect(() => {
     run(
-      fetch({ url: "/api/products/?page=1&limit=10" })
+      fetch({ url: "/api/categories" })
     )
   }, [run])
 
@@ -67,14 +67,13 @@ export default function BrowseTheRoom() {
         "1/4": "md:col-span-4 md:row-span-1",
         "2/2": "md:col-span-2 md:row-span-2",
         "2/3": "md:col-span-3 md:row-span-2",
-      },
+      }
     },
     meta: {
       "1/9": "left-0 top-0 bottom-0 flex justify-center flex-col pl-48 md:pl-72",
       "1/4": "left-0 top-0 bottom-0 flex justify-center flex-col pl-48 md:pl-72",
       "2/2": "inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-48 md:pl-0 pt-0 md:pt-12",
-      "2/3": "inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-48 md:pl-0 pt-0 md:pt-12",
-
+      "2/3": "inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-48 md:pl-0 pt-0 md:pt-12"
     }
   }
 
