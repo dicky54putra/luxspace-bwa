@@ -4,20 +4,21 @@ import { Link } from 'react-router-dom'
 import fetch from 'helpers/fetch'
 import Carousel from 'components/Carousel';
 
-function Loading({ item = 4 }) {
-  const skeleton = [];
-  for (let i = 0; i < item; i++) {
-    skeleton.push(
-      <div key={`skeleton-just-arrived-${i}`} className="px-4 relative card group">
-        <div className="rounded-xl overflow-hidden card-shadow relative bg-gray-300"
-          style={{ width: "287px", height: "386px" }} >
+function Loading() {
+  return Array(6)
+    .fill()
+    .map((_, index) => {
+      return (
+        <div className="px-4 relative card group" key={index}>
+          <div
+            className="rounded-xl bg-gray-300 overflow-hidden card-shadow relative"
+            style={{ width: 287, height: 386 }}
+          ></div>
+          <div className="w-24 h-3 bg-gray-300 mt-3 rounded-full"></div>
+          <div className="w-36 h-3 bg-gray-300 mt-2 rounded-full"></div>
         </div>
-        <div className="w-8/12 h-3 absolute bottom-16 left-10 bg-gray-400 mt-3 rounded-full"></div>
-        <div className="w-6/12 h-3 absolute bottom-10 left-10 bg-gray-400 mt-3 rounded-full"></div>
-      </div>
-    )
-  }
-  return skeleton
+      );
+    });
 }
 
 export default function JustArrived() {
@@ -41,7 +42,7 @@ export default function JustArrived() {
         <div className="container mx-auto" ref={refContainer}></div>
         {
           isLoading ? (
-            <div className="flex -mx-4 flex-row relative"> <Loading item={10} /></div>
+            <div className="flex -mx-4 flex-row relative"> <Loading /></div>
           ) : error ? (
             JSON.stringify(error)
           ) : data.data.length === 0 ? (
