@@ -85,7 +85,7 @@ export default function JustArrived() {
                       </div>
                       <h5 className="text-lg font-semibold mt-4">{item.title}</h5>
                       <span className="">IDR {item.price}</span>
-                      <Link to={`/product/${item.id}`} className="stretched-link">
+                      <Link to={`/categories/${item.idc}/product/${item.id}`} className="stretched-link">
                         {/* <!-- fake children --> */}
                       </Link>
                     </div>
