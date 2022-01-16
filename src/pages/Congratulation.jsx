@@ -1,18 +1,22 @@
-import Breadcrumb from 'components/Breadcrumb'
-import Footer from 'part/Footer'
-import Header from 'part/Header'
-import Sitemap from 'part/Sitemap'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import Breadcrumb from "components/Breadcrumb";
+import useScrollToTop from "helpers/hooks/useScrollToTop";
+import Footer from "part/Footer";
+import Header from "part/Header";
+import Sitemap from "part/Sitemap";
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Congratulation() {
+  useScrollToTop();
   return (
     <>
       <Header theme="black" position="relative" />
-      <Breadcrumb list={[
-        { url: "/", name: "Home" },
-        { url: "/congratilation", name: "Success Checkout" },
-      ]} />
+      <Breadcrumb
+        list={[
+          { url: "/", name: "Home" },
+          { url: "/congratilation", name: "Success Checkout" },
+        ]}
+      />
 
       <section className="">
         <div className="container mx-auto min-h-screen">
@@ -22,11 +26,20 @@ export default function Congratulation() {
                 src="/images/content/illustration-success.png"
                 alt="congrats illustration"
               />
-              <h2 className="text-3xl font-semibold mb-6">Ah yes it’s success!</h2>
-              <p className="text-lg mb-12"> Furniture yang anda beli akan kami kirimkan saat ini juga so now
-                please sit tight and be ready for it </p>
-              <Link to="/" className="text-gray-900 bg-red-200 focus:outline-none w-full py-3 rounded-full text-lg focus:text-black transition-all duration-200 px-8 cursor-pointer" >
-                Back to Shop </Link>
+              <h2 className="text-3xl font-semibold mb-6">
+                Ah yes it’s success!
+              </h2>
+              <p className="text-lg mb-12">
+                {" "}
+                Furniture yang anda beli akan kami kirimkan saat ini juga so now
+                please sit tight and be ready for it{" "}
+              </p>
+              <Link
+                to="/"
+                className="text-gray-900 bg-red-200 focus:outline-none w-full py-3 rounded-full text-lg focus:text-black transition-all duration-200 px-8 cursor-pointer"
+              >
+                Back to Shop{" "}
+              </Link>
             </div>
           </div>
         </div>
@@ -35,5 +48,5 @@ export default function Congratulation() {
       <Sitemap />
       <Footer />
     </>
-  )
+  );
 }

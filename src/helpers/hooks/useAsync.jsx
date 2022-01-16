@@ -1,57 +1,63 @@
-import { useCallback, useReducer, useRef } from 'react'
-import useSafeDispatch from './useSafeDispatch'
+import { useCallback, useReducer, useRef } from "react";
+import useSafeDispatch from "./useSafeDispatch";
 
 const defaultState = {
   data: null,
   status: "idle",
-  error: null
-}
+  error: null,
+};
 export default function useAsync(initialState) {
   const initialStateRef = useRef({
-    ...defaultState, ...initialState
-  })
+    ...defaultState,
+    ...initialState,
+  });
 
   const [{ data, status, error }, setState] = useReducer((state, action) => {
-    return { ...state, ...action }
-  }, initialStateRef.current)
+    return { ...state, ...action };
+  }, initialStateRef.current);
 
-  const safeSetState = useSafeDispatch(setState)
+  const safeSetState = useSafeDispatch(setState);
 
   const run = useCallback(
     (promise) => {
       if (!promise || !promise.then)
-        throw new Error(`The argument passed to useAsync().run must be a promise`)
-      safeSetState({ status: "Pending" })
-      return promise.then(data => {
-        safeSetState({ data, status: "resolve" })
-        return data
-      }, error => {
-        safeSetState({ status: "rejected", error: JSON.parse(error.message) })
-      })
+        throw new Error(
+          `The argument passed to useAsync().run must be a promise`
+        );
+      safeSetState({ status: "Pending" });
+      return promise.then(
+        (data) => {
+          safeSetState({ data, status: "resolve" });
+          return data;
+        },
+        (error) => {
+          safeSetState({
+            status: "rejected",
+            error: JSON.parse(error.message),
+          });
+        }
+      );
     },
-    [safeSetState],
-  )
+    [safeSetState]
+  );
 
   const setData = useCallback(
     (data) => {
-      safeSetState({ data })
+      safeSetState({ data });
     },
-    [safeSetState],
-  )
+    [safeSetState]
+  );
 
   const setError = useCallback(
     (error) => {
-      safeSetState({ error })
+      safeSetState({ error });
     },
-    [safeSetState],
-  )
+    [safeSetState]
+  );
 
-  const reset = useCallback(
-    () => {
-      safeSetState(initialStateRef.current)
-    },
-    [safeSetState],
-  )
+  const reset = useCallback(() => {
+    safeSetState(initialStateRef.current);
+  }, [safeSetState]);
 
   return {
     data,
@@ -62,8 +68,8 @@ export default function useAsync(initialState) {
     setError,
     reset,
     isIdle: status === "idle",
-    isLoading: status !== 'resolve' && status !== "rejected",
+    isLoading: status !== "resolve" && status !== "rejected",
     isError: status === "rejected",
     isSuccess: status === "resolve",
-  }
+  };
 }

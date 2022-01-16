@@ -1,17 +1,17 @@
-import { useCallback, useLayoutEffect, useRef } from 'react'
+import { useCallback, useLayoutEffect, useRef } from "react";
 
 export default function useSafeDispatch(dispatch) {
-  const mounted = useRef(false)
+  const mounted = useRef(false);
 
   useLayoutEffect(() => {
-    mounted.current = true
+    mounted.current = true;
     return () => {
-      mounted.current = false
+      mounted.current = false;
     };
-  }, [])
+  }, []);
 
   return useCallback(
-    (...args) => mounted.current ? dispatch(...args) : void 0,
-    [dispatch],
-  )
+    (...args) => (mounted.current ? dispatch(...args) : void 0),
+    [dispatch]
+  );
 }

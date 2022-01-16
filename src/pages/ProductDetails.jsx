@@ -8,6 +8,7 @@ import Suggestion from "part/ProductDetail/Suggestion";
 import useAsync from "helpers/hooks/useAsync";
 import { useParams } from "react-router-dom";
 import fetchData from "helpers/fetch";
+import useScrollToTop from "helpers/hooks/useScrollToTop";
 
 function LoadingSuggestion() {
   return (
@@ -100,6 +101,7 @@ function LoadingSlider() {
 }
 
 export default function ProductDetails() {
+  useScrollToTop();
   const { idp } = useParams();
   const { data, run, isLoading } = useAsync();
 
