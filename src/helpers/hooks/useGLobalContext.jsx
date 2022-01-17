@@ -2,10 +2,11 @@ import React, { createContext, useContext, useReducer } from "react";
 
 const Context = createContext();
 
+const localStorageCart = window.localStorage.getItem("cart") ?? "{}";
 const initialState = {
-  cart: {},
+  cart: JSON.parse(localStorageCart),
 };
-
+console.log(JSON.parse(localStorageCart));
 export function useGLobalContext() {
   const [state, dispatch] = useContext(Context);
   if (!state || !dispatch) {
@@ -17,7 +18,7 @@ export function useGLobalContext() {
 function Reducer(state, action) {
   switch (action.type) {
     case "ADD_TO_CART":
-      return {
+      const dataAddToCart = {
         ...state,
         cart: state.cart
           ? {
@@ -26,8 +27,10 @@ function Reducer(state, action) {
             }
           : { [action.item.id]: action.item },
       };
+      window.localStorage.setItem("cart", JSON.stringify(dataAddToCart.cart));
+      return dataAddToCart;
     case "REMOVE_FROM_CART":
-      return {
+      const dataRemoveCart = {
         ...state,
         cart: Object.keys(state.cart)
           .filter((key) => +key !== +action.id)
@@ -37,7 +40,10 @@ function Reducer(state, action) {
             return acc;
           }, {}),
       };
+      window.localStorage.setItem("cart", JSON.stringify(dataRemoveCart.cart));
+      return dataRemoveCart;
     case "RESET_CART":
+      window.localStorage.removeItem("cart");
       return {
         ...state,
         cart: initialState.cart,
