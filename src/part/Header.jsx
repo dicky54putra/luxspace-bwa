@@ -102,13 +102,11 @@ export default function Header({ theme, position }) {
             <ul className="items-center flex">
               <li className="ml-6 block md:hidden">
                 <button
-                  id="menu-toggler"
-                  onClick={() =>
-                    ToggleMainMenu === false
-                      ? setToggleMainMenu(true)
-                      : setToggleMainMenu(false)
-                  }
-                  className="relative flex z-50 items-center justify-center w-8 h-8 text-black md:text-white focus:outline-none"
+                  onClick={() => setToggleMainMenu((prev) => !prev)}
+                  className={[
+                    `flex z-50 items-center justify-center w-8 h-8 text-black md:text-white focus:outline-none transition-all ease-in-out duration-300`,
+                    ToggleMainMenu ? "fixed top-1 right-1" : "relative",
+                  ].join(" ")}
                 >
                   <svg
                     className="fill-current"

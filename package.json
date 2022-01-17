@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^6.3.0",
-    "@testing-library/jest-dom": "^5.14.1",
+    "@craco/craco": "^6.4.3",
+    "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "html-react-parser": "^1.4.4",
@@ -39,8 +39,8 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "postcss": "^7.0.38",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
+    "autoprefixer": "^9.8.8",
+    "postcss": "^7.0.39",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
 }
