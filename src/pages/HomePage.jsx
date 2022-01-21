@@ -6,16 +6,11 @@ import BrowseTheRoom from "part/HomePage/BrowseTheRoom";
 import JustArrived from "part/HomePage/JustArrived";
 import Sitemap from "part/Sitemap";
 import React from "react";
-import useScrollAnchor from "helpers/hooks/useScrollAnchor";
-import useModalDom from "helpers/hooks/useModalDom";
-import useScrollToTop from "helpers/hooks/useScrollToTop";
+import Documents from "part/Documents";
 
 export default function HomePage() {
-  useScrollAnchor();
-  useModalDom();
-  useScrollToTop();
   return (
-    <>
+    <Documents>
       <Header theme="white" position="absolute" />
       <Hero />
       <BrowseTheRoom />
@@ -23,6 +18,6 @@ export default function HomePage() {
       <Clients />
       <Sitemap />
       <Footer />
-    </>
+    </Documents>
   );
 }

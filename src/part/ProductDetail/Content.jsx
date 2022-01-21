@@ -53,8 +53,8 @@ export default function Content({ data }) {
           </div>
         </div>
         <div className="flex-1 px-4 md:p-6">
-          <h2 className="text-5xl font-semibold">Chair Thatty</h2>
-          <p className="text-xl">IDR 12.000.000</p>
+          <h2 className="text-5xl font-semibold">{data?.title}</h2>
+          <p className="text-xl">IDR {data?.price}</p>
           <button
             className="transition-all duration-200 bg-pink-400 text-black focus:bg-black focus:text-pink-400 rounded-full px-8 py-3 mt-4 inline-flex"
             onClick={() =>
@@ -81,7 +81,7 @@ export default function Content({ data }) {
           <hr className="my-8" />
 
           <h6 className="text-xl font-semibold mb-4">About the product</h6>
-          {data.description ? HTMLReactParser(data.description) : ""}
+          {data?.description ? HTMLReactParser(data?.description) : ""}
         </div>
       </div>
     </section>

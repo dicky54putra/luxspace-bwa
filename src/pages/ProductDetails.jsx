@@ -8,7 +8,7 @@ import Suggestion from "part/ProductDetail/Suggestion";
 import useAsync from "helpers/hooks/useAsync";
 import { useParams } from "react-router-dom";
 import fetchData from "helpers/fetch";
-import useScrollToTop from "helpers/hooks/useScrollToTop";
+import Documents from "part/Documents";
 
 function LoadingSuggestion() {
   return (
@@ -101,15 +101,15 @@ function LoadingSlider() {
 }
 
 export default function ProductDetails() {
-  useScrollToTop();
   const { idp } = useParams();
   const { data, run, isLoading } = useAsync();
 
   useEffect(() => {
     run(fetchData({ url: `/api/products/${idp}` }));
   }, [run, idp]);
+
   return (
-    <>
+    <Documents>
       <Header theme="black" position="relative" />
       <Breadcrumb
         list={[
@@ -128,6 +128,6 @@ export default function ProductDetails() {
       )}
       <Sitemap />
       <Footer />
-    </>
+    </Documents>
   );
 }

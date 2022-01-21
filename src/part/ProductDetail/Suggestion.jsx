@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Suggestion({ data }) {
+  const data_ = data ?? [];
   return (
     <section className="bg-gray-100 px-4 py-16">
       <div className="container mx-auto">
@@ -13,7 +14,7 @@ export default function Suggestion({ data }) {
           </h3>
         </div>
         <div className="flex overflow-x-auto mb-4 -mx-3">
-          {data?.map((item, index) => {
+          {data_?.map((item, index) => {
             return (
               <div
                 className="px-3 flex-none"
@@ -31,7 +32,7 @@ export default function Suggestion({ data }) {
                   <h5 className="text-lg font-semibold mt-4">{item.title}</h5>
                   <span className="">IDR {item.price}</span>
                   <Link
-                    to={`/categories/${item.idc}/product/${item.idp}`}
+                    to={`/categories/${item.idc}/product/${item.id}`}
                     className="stretched-link"
                   >
                     {/* <!-- fake children --> */}

@@ -38,9 +38,7 @@ export default function Header({ theme, position }) {
             <ul
               className={[
                 "fixed bg-white inset-0 flex flex-col  items-center justify-center md:visible md:flex-row md:bg-transparent md:relative md:opacity-100 md:flex md:items-center transition-all ease-in-out duration-300",
-                ToggleMainMenu === false
-                  ? "opacity-0 invisible"
-                  : "opacity-100 visible",
+                ToggleMainMenu ? "opacity-100 visible" : "opacity-0 invisible",
               ].join(" ")}
               id="menu"
             >
