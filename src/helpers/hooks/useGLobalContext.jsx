@@ -6,7 +6,7 @@ const localStorageCart = window.localStorage.getItem("cart") ?? "{}";
 const initialState = {
   cart: JSON.parse(localStorageCart),
 };
-console.log(JSON.parse(localStorageCart));
+
 export function useGLobalContext() {
   const [state, dispatch] = useContext(Context);
   if (!state || !dispatch) {

@@ -1,6 +1,7 @@
 import useAsync from "helpers/hooks/useAsync";
 import React, { useEffect } from "react";
 import fetch from "helpers/fetch";
+import "helpers/format/thausand";
 
 function Loading({ ratio = {} }) {
   const dummy = [
@@ -121,7 +122,8 @@ export default function BrowseTheRoom() {
                   >
                     <h5 className="text-lg font-semibold">{item.title}</h5>
                     <span className="">
-                      {item.products} item{item.products > 0 ? "s" : ""}
+                      {item.products.thousand()} item
+                      {item.products > 0 ? "s" : ""}
                     </span>
                   </div>
                 </div>

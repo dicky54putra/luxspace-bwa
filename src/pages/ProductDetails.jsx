@@ -9,6 +9,7 @@ import useAsync from "helpers/hooks/useAsync";
 import { useParams } from "react-router-dom";
 import fetchData from "helpers/fetch";
 import Documents from "part/Documents";
+import PageErrorMessage from "part/PageErrorMessage";
 
 function LoadingSuggestion() {
   return (
@@ -102,7 +103,7 @@ function LoadingSlider() {
 
 export default function ProductDetails() {
   const { idp } = useParams();
-  const { data, run, isLoading } = useAsync();
+  const { data, run, isLoading, isError, error } = useAsync();
 
   useEffect(() => {
     run(fetchData({ url: `/api/products/${idp}` }));
@@ -118,13 +119,22 @@ export default function ProductDetails() {
           { url: "/product/kursi-gaming", name: "Details" },
         ]}
       />
-      {isLoading ? <LoadingSlider /> : <Content data={data} />}
-      {isLoading ? (
-        <div className="flex overflow-x-auto mb-4 -mx-3">
-          <LoadingSuggestion />
-        </div>
+      {isError ? (
+        <PageErrorMessage
+          title="Product Not Found!"
+          body={error.errors.message}
+        />
       ) : (
-        <Suggestion data={data ? data.relatedProducts : {}} />
+        <>
+          {isLoading ? <LoadingSlider /> : <Content data={data} />}
+          {isLoading ? (
+            <div className="flex overflow-x-auto mb-4 -mx-3">
+              <LoadingSuggestion />
+            </div>
+          ) : (
+            <Suggestion data={data ? data.relatedProducts : {}} />
+          )}
+        </>
       )}
       <Sitemap />
       <Footer />
